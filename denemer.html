@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Aşk Temalı Site</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      color: #d6336c;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      font-size: 1.5em;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .figure {
+      width: 130px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: popIn 1s ease forwards;
+    }
+
+    .figure:hover {
+      transform: scale(1.15) rotate(2deg);
+    }
+
+    .figure img {
+      width: 130px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 0; /* köşeler yok */
+      box-shadow: 0 0 25px rgba(255, 105, 180, 0.8);
+      animation: pulse 2s infinite alternate;
+    }
+
+    /* Ortada çıkan mesaj kutusu */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 10px;
+    }
+
+    .overlay.active {
+      display: flex;
+    }
+
+    .message-box {
+      background: linear-gradient(45deg, #ffdde1, #ff80ab);
+      padding: 20px;
+      border-radius: 15px;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.9);
+      animation: zoomIn 0.5s ease forwards;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    .close-btn {
+      margin-top: 15px;
+      background: white;
+      color: #d6336c;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      border: none;
+      font-size: 14px;
+    }
+    .close-btn:hover {
+      background: #ffe6eb;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Sevgilim İçin 💖</h1>
+  <div class="gallery">
+    <!-- 25 hayvan figürü (kedi hariç) -->
+    <div class="figure" onclick="showMessage('Güneşin buz tuttuğu yerde bir alev görürsen, Bil ki o yalnız senin için yanan kalbimdir.')"><img src="dog.png" alt="Köpek"></div>
+    <div class="figure" onclick="showMessage('Rüyalarını gül yapraklarıyla yatağını papatyalarla süsledim, üzerini sevgiyle örtüp tüm kâbusları aldım ki en güzel rüyaları sen göresin.')"><img src="bird.png" alt="Kuş"></div>
+    <div class="figure" onclick="showMessage('Sen bazen en zifiri karanlık gecemin güneşi sen bazen yaşanacak hayatın cesaret verecek mutluluk yanı sen bazen ve her zaman sevgimin tek nedenisin.')"><img src="rabbit.png" alt="Tavşan"></div>
+    <div class="figure" onclick="showMessage('Gözlerinden göğsüme sayısız yıldız akar. Bir gülüşün içimde binlerce lamba yakar.')"><img src="panda.png" alt="Panda"></div>
+    <div class="figure" onclick="showMessage('Üşürsen söyle sevgilim. Seni bir kat daha seveyim')"><img src="bear.png" alt="Ayı"></div>
+    <div class="figure" onclick="showMessage('Bir yürek nelere yeterse, bir can bir canı ne kadar severse bir damardan ne kadar çok kan geçerse, yaşam ölüme ne kadar değerse, sen de benim için o kadar değerlisin')"><img src="lion.png" alt="Aslan"></div>
+    <div class="figure" onclick="showMessage('Ne seni unutturacak kadar zaman geçecek ne de geçen zaman seni unutturmaya yetecek bırakıp gitsen de unuturum sanma zaman alışmayı öğretir unutmayı asla.')"><img src="tiger.png" alt="Kaplan"></div>
+    <div class="figure" onclick="showMessage('Bugün her zamankinden farklı bir şey yapayım dedim olmadı yine sana defalarca aşık olup seni düşündüm.')"><img src="elephant.png" alt="Fil"></div>
+    <div class="figure" onclick="showMessage('BİR TEK SENİ SEVDİM GERİSİ YALAN')"><img src="fox.png" alt="Tilki"></div>
+    <div class="figure" onclick="showMessage('Seni her düşündüğümde kalbime bir yıldız çiziyorum. Benim şimdi kaç yıldızım var biliyor musun? Benim artık bir gökyüzüm var.')"><img src="deer.png" alt="Geyik"></div>
+    <div class="figure" onclick="showMessage('Dünyadaki en güzel şeyi sana vermek isterdim ama seni sana veremem ki?)"><img src="monkey.png" alt="Maymun"></div>
+    <div class="figure" onclick="showMessage('Seni ne kadar sevdiğimi öğrenmek istersen yere düşen her yağmur damlasını tutmaya çalış; tutabildiklerin senin sevgin, tutamadıklarınsa; benim sana olan sevgimdir.')"><img src="horse.png" alt="At"></div>
+    <div class="figure" onclick="showMessage('Yedi ayrı iklimden yedi çeşit arı getirseler yedi çeşit arı yedi ayrı çiçeği dolaşsa yedi ayrı çiçekten bal yapsa senin kadar tatlı olamaz.')"><img src="cow.png" alt="İnek"></div>
+    <div class="figure" onclick="showMessage('Eğer geceler seni düşündüğüm kadar uzun olsaydı asla sabah olmazdı.')"><img src="sheep.png" alt="Koyun"></div>
+    <div class="figure" onclick="showMessage('Bu gözler seni gördü başkasını görmez artık bu yürek senle güldü başkasıyla gülmez artık bu gönül seni sevdi başkasını sevmez artık bu ömür senle biter başkası olmaz artık.')"><img src="goat.png" alt="Keçi"></div>
+    <div class="figure" onclick="showMessage('Takvimin en güzel yaprağıydı seni tanıdığım gün.')"><img src="duck.png" alt="Ördek"></div>
+    <div class="figure" onclick="showMessage('Seninle kavga etmeyi başkasıyla gülmeye değişmem.')"><img src="penguin.png" alt="Penguen"></div>
+    <div class="figure" onclick="showMessage('Kalem olsa dünyadaki bütün ağaçlar ve bütün denizler mürekkep olsa senin şiirini yazamam yine de.')"><img src="koala.png" alt="Koala"></div>
+    <div class="figure" onclick="showMessage('Gözlerin nehir, kirpiklerin köprü olsun, ben tam üzerinden geçerken ipler kopsun, düştüğüm o yer dudakların olsun')"><img src="owl.png" alt="Baykuş"></div>
+    <div class="figure" onclick="showMessage('Sen bile bilemezsin gülüşün ben de kaç bahar eder.')"><img src="frog.png" alt="Kurbağa"></div>
+    <div class="figure" onclick="showMessage('Ey yar! Soğuksan donmaya geldim. Ateşsen yanmaya, yağmursan ıslanmaya, seninle ölmeye geldim.')"><img src="mouse.png" alt="Fare"></div>
+    <div class="figure" onclick="showMessage('Eğer çölde bir çiçek olsan; seni kaybetmemek için gözyaşlarımla sulardım. Eğer gözümdeki bir damla yaş olsaydın seni kaybetmemek için hiç ağlamazdım.')"><img src="hedgehog.png" alt="Kirpi"></div>
+    <div class="figure" onclick="showMessage('Dünyada 2 renk gül olsun, biri kırmızı diğeri beyaz, sen beni unutursan kırmızılar solsun, ben seni unutursam beyazlar kefenim olsun.')"><img src="squirrel.png" alt="Sincap"></div>
+    <div class="figure" onclick="showMessage('Başını göğsüme yasladığında tek bir düşmanım vardır: Geçip giden zaman.')"><img src="camel.png" alt="Deve"></div>
+    <div class="figure" onclick="showMessage('Güneşin doğduğu da bir gerçek battığı da kalbimin attığı da bir gerçek günün bittiği de ne çıkar tüm gerçekleri saysak tek tek. Seni seviyorum, işte o en büyük gerçek.')"><img src="giraffe.png" alt="Zürafa"></div>
+  </div>
+
+  <!-- Ortada çıkan mesaj kutusu -->
+  <div class="overlay" id="overlay">
+    <div class="message-box" id="messageBox">
+      <p id="messageText"></p>
+      <button class="close-btn" onclick="closeMessage()">Kapat</button>
+    </div>
+  </div>
+
+  <script>
+    function showMessage(text) {
+      document.getElementById('messageText').innerText = text;
+      document.getElementById('overlay').classList.add('active');
+    }
+    function closeMessage() {
+      document.getElementById('overlay').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
