@@ -65,17 +65,29 @@
     }
 
     .message-box {
-      background: linear-gradient(45deg, #ffdde1, #ff80ab);
-      padding: 20px;
-      border-radius: 15px;
-      color: white;
-      font-size: 18px;
-      font-weight: bold;
-      box-shadow: 0 0 30px rgba(255, 105, 180, 0.9);
-      animation: zoomIn 0.5s ease forwards;
-      max-width: 90%;
-      text-align: center;
+    background: linear-gradient(45deg, #ffdde1, #ff80ab);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    font-size: 18px;   /* normal ekranlarda */
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* okunabilirlik için gölge */
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.9);
+    animation: zoomIn 0.5s ease forwards;
+    max-width: 90%;
+    text-align: center;
+  }
+
+    /* Mobil uyum */
+  @media (max-width: 600px) {
+    .message-box {
+      font-size: 22px;   /* telefonda daha büyük yazı */
+      padding: 25px;
     }
+    h1 {
+      font-size: 1.3em;
+    }
+  }
 
     @keyframes zoomIn {
       from { transform: scale(0.5); opacity: 0; }
